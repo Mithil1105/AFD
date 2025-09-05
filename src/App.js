@@ -259,38 +259,52 @@ function AboutPage() {
           ))}
         </div>
       </Section>
-      <Section title="The Founder" subtitle="Leadership with craft & care.">
-        <div className="team-card">
-          <div className="team-media">
-            <img src="https://source.unsplash.com/random/640x480?sig=201&portrait" alt="Hemali Vakani portrait" />
-          </div>
-          <div>
-            <div className="team-header"><h3>Hemali Vakani</h3></div>
-            <p className="team-role">Founder & Principal Artist</p>
-            <p>Born with an eye for detail and a heart drawn to textures and forms, Hemali Vakani guides our design philosophy with hands-on experience and a deep respect for nature.</p>
-            <div className="team-quote">I believe that design can make the invisible visible—giving form to emotions, memories, and ideas that exist beyond words.</div>
-            <ul className="team-list">
-              <li>Diploma in Sculpture</li>
-              <li>15+ years of cross-disciplinary practice</li>
-              <li>Featured in national exhibitions</li>
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      <Section title="About our team" subtitle="The people who deliver.">
+      <Section title="Meet our team" subtitle="The people who deliver.">
         <div className="grid">
           {[
-            { n: 'Mayur Vakani', r: 'Project Lead', img: 'https://source.unsplash.com/random/400x300?sig=21&portrait' },
-            { n: 'Hemali Vakani', r: 'Design & Community', img: 'https://source.unsplash.com/random/400x300?sig=22&portrait' },
-            { n: 'Anand Tike', r: 'Engineering & Safety', img: 'https://source.unsplash.com/random/400x300?sig=23&portrait' }
+            {
+              n: 'Mayur Vakani',
+              r: 'Project Lead',
+              img: 'https://source.unsplash.com/random/640x480?sig=21&portrait',
+              bio: 'Mayur brings strategic vision and project management expertise to every tourism and forest conservation initiative.',
+              quote: 'Every project is an opportunity to create lasting positive impact on both communities and ecosystems.',
+              achievements: ['10+ years project management', 'Forest conservation specialist', 'Community engagement expert']
+            },
+            {
+              n: 'Hemali Vakani',
+              r: 'Design & Community',
+              img: 'https://source.unsplash.com/random/640x480?sig=22&portrait',
+              bio: 'Born with an eye for detail and a heart drawn to textures and forms, Hemali guides our design philosophy with hands-on experience.',
+              quote: 'I believe that design can make the invisible visible—giving form to emotions, memories, and ideas that exist beyond words.',
+              achievements: ['Diploma in Sculpture', '15+ years cross-disciplinary practice', 'Featured in national exhibitions']
+            },
+            {
+              n: 'Anand Tike',
+              r: 'Engineering & Safety',
+              img: 'https://source.unsplash.com/random/640x480?sig=23&portrait',
+              bio: 'Anand ensures every structure meets the highest safety standards while maintaining harmony with natural environments.',
+              quote: 'Engineering excellence means building not just for today, but for generations to come.',
+              achievements: ['Civil Engineering degree', 'Safety compliance specialist', 'Sustainable construction expert']
+            }
           ].map((m) => (
-            <div className="card" key={m.n}>
-              <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-                <img className="avatar" src={m.img} alt={`${m.n} avatar`} />
-                <div>
-                  <h3 style={{ margin: '0 0 4px' }}>{m.n}</h3>
-                  <p style={{ margin: 0 }} className="footer-muted">{m.r}</p>
+            <div className="team-card" key={m.n}>
+              <div className="team-media">
+                <img src={m.img} alt={`${m.n} portrait`} />
+              </div>
+              <div>
+                <div className="team-header"><h3>{m.n}</h3></div>
+                <p className="team-role">{m.r}</p>
+                <p>{m.bio}</p>
+                <div className="team-quote">{m.quote}</div>
+                <ul className="team-list">
+                  {m.achievements.map((achievement, idx) => (
+                    <li key={idx}>{achievement}</li>
+                  ))}
+                </ul>
+                <div className="team-socials">
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
+                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FiInstagram /></a>
+                  <a href="mailto:amitfibredecor@gmail.com" aria-label="Email"><FiMail /></a>
                 </div>
               </div>
             </div>
