@@ -260,12 +260,12 @@ function AboutPage() {
         </div>
       </Section>
       <Section title="Meet our team" subtitle="The people who deliver.">
-        <div className="grid">
+        <div className="team-grid">
           {[
             {
               n: 'Mayur Vakani',
               r: 'Project Lead',
-              img: 'https://source.unsplash.com/random/640x480?sig=21&portrait',
+              img: '/assets/about/mayur-vakani.jpeg',
               bio: 'Mayur brings strategic vision and project management expertise to every tourism and forest conservation initiative.',
               quote: 'Every project is an opportunity to create lasting positive impact on both communities and ecosystems.',
               achievements: ['10+ years project management', 'Forest conservation specialist', 'Community engagement expert']
@@ -273,7 +273,7 @@ function AboutPage() {
             {
               n: 'Hemali Vakani',
               r: 'Design & Community',
-              img: 'https://source.unsplash.com/random/640x480?sig=22&portrait',
+              img: '/assets/about/hemali.jpeg',
               bio: 'Born with an eye for detail and a heart drawn to textures and forms, Hemali guides our design philosophy with hands-on experience.',
               quote: 'I believe that design can make the invisible visible—giving form to emotions, memories, and ideas that exist beyond words.',
               achievements: ['Diploma in Sculpture', '15+ years cross-disciplinary practice', 'Featured in national exhibitions']
