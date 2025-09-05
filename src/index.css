@@ -1,13 +1,177 @@
+/* Global Theme Variables */
+:root {
+  --navy: #0A0F1F;
+  --bg: #050915;
+  --text: #E6F1FF;
+  --muted: #7A8BA3;
+  --neon-green: #39FF14;
+  --neon-cyan: #00FFF5;
+  --neon-magenta: #FF00E6;
+  --accent-amber: #FFD166;
+
+  --container-max: 1200px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-neon: 0 0 0px rgba(0, 255, 245, 0.0);
+  --shadow-neon-hover: 0 0 24px rgba(0, 255, 245, 0.25);
+  --focus-outline: 3px solid var(--neon-cyan);
+  --focus-offset: 3px;
+}
+
+/* Day theme (true light mode) */
+:root[data-theme='day'] {
+  --bg: #F7FAFF;
+  --navy: #FFFFFF;
+  --text: #0A0F1F;
+  --muted: #42526B;
+  /* Use navy blue accents in light mode */
+  --neon-cyan: #0A0F1F;
+  --shadow-neon-hover: 0 0 18px rgba(10, 15, 31, 0.18);
+}
+
+/* Night theme overrides */
+:root[data-theme='night'] {
+  --navy: #060A16;
+  --bg: #040712;
+  --text: #EAF4FF;
+  --muted: #8EA0B8;
+  --shadow-neon-hover: 0 0 32px rgba(0, 255, 245, 0.30);
+}
+
+/* Base Reset */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+/* Focus styles */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-offset);
+}
+
+/* Containers and utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -40px;
+  background: var(--navy);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  transition: top .2s ease;
+  z-index: 10000;
+  border: 1.5px solid var(--neon-cyan);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Buttons base (variants further in components) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Section spacing */
+section {
+  padding: 64px 0;
+}
+
+.section-header {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 28px;
+  margin: 0 0 8px;
+  letter-spacing: .4px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
