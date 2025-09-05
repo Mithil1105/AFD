@@ -259,6 +259,44 @@ function AboutPage() {
           ))}
         </div>
       </Section>
+      <Section title="The Founder" subtitle="Leadership with craft & care.">
+        <div className="team-card">
+          <div className="team-media">
+            <img src="https://source.unsplash.com/random/640x480?sig=201&portrait" alt="Hemali Vakani portrait" />
+          </div>
+          <div>
+            <div className="team-header"><h3>Hemali Vakani</h3></div>
+            <p className="team-role">Founder & Principal Artist</p>
+            <p>Born with an eye for detail and a heart drawn to textures and forms, Hemali Vakani guides our design philosophy with hands-on experience and a deep respect for nature.</p>
+            <div className="team-quote">I believe that design can make the invisible visible—giving form to emotions, memories, and ideas that exist beyond words.</div>
+            <ul className="team-list">
+              <li>Diploma in Sculpture</li>
+              <li>15+ years of cross-disciplinary practice</li>
+              <li>Featured in national exhibitions</li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="About our team" subtitle="The people who deliver.">
+        <div className="grid">
+          {[
+            { n: 'Mayur Vakani', r: 'Project Lead', img: 'https://source.unsplash.com/random/400x300?sig=21&portrait' },
+            { n: 'Hemali Vakani', r: 'Design & Community', img: 'https://source.unsplash.com/random/400x300?sig=22&portrait' },
+            { n: 'Anand Tike', r: 'Engineering & Safety', img: 'https://source.unsplash.com/random/400x300?sig=23&portrait' }
+          ].map((m) => (
+            <div className="card" key={m.n}>
+              <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+                <img className="avatar" src={m.img} alt={`${m.n} avatar`} />
+                <div>
+                  <h3 style={{ margin: '0 0 4px' }}>{m.n}</h3>
+                  <p style={{ margin: 0 }} className="footer-muted">{m.r}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
     </main>
   );
 }
