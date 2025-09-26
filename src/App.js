@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
-import { HashRouter, Routes, Route, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiLinkedin, FiInstagram, FiMail, FiSun, FiMoon } from 'react-icons/fi';
-import { MdMap } from 'react-icons/md';
-import { GiTreehouse } from 'react-icons/gi';
-import { TbTrees } from 'react-icons/tb';
+
+import Hero from './sections/home/Hero';
+import MajorAchievements from './sections/home/MajorAchievements';
+import WhatWeDo from './sections/home/WhatWeDo';
+import './styles/home.css';
+import ProjectsGrid from './sections/about/ProjectsGrid';
+import './styles/about.css';
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -196,186 +200,128 @@ function Footer() {
 }
 
 function HomePage() {
-  const navigate = useNavigate();
   return (
     <main id="main">
-      <div className="hero">
-        <span className="glow-sweep" aria-hidden="true"></span>
-        <div className="stars" aria-hidden="true"></div>
-        <div className="container">
-          <h1>Amit Fibre Decor</h1>
-          <h2>Sustainable Tourism & Forest Solutions</h2>
-          <p>We design eco-tourism experiences and build forest infrastructure that respects habitats.</p>
-          <div className="hero-ctas">
-            <Button onClick={() => navigate('/projects')} variant="primary" size="lg">View Projects</Button>
-            <Button as={'link'} to={'/contact'} variant="outline" size="lg">Contact Us</Button>
-          </div>
-        </div>
-      </div>
-
-      <Section title="What We Do">
-        <div className="grid">
-          <div className="card">
-            <span className="icon" aria-hidden="true"><MdMap /></span>
-            <h3>Eco-Tourism Planning</h3>
-            <p>Visitor journeys, capacity planning, route design, and interpretive storytelling.</p>
-          </div>
-          <div className="card">
-            <span className="icon" aria-hidden="true"><GiTreehouse /></span>
-            <h3>Forest Infrastructure</h3>
-            <p>Boardwalks, shelters, viewing decks, and low-impact amenities engineered for longevity.</p>
-          </div>
-          <div className="card">
-            <span className="icon" aria-hidden="true"><TbTrees /></span>
-            <h3>Restoration & Trails</h3>
-            <p>Trail building, erosion control, habitat buffers, and safety-first signage.</p>
-          </div>
-        </div>
-      </Section>
+      <Hero />
+      <WhatWeDo />
+      <MajorAchievements />
     </main>
   );
 }
 
 function AboutPage() {
   return (
-    <main id="main" className="container">
-      <Section title="About">
-        <p>
-          Amit Fibre Decor partners with agencies and communities to create tourism experiences that protect nature.
-        </p>
-      </Section>
-      <Section title="Our Values">
-        <div className="grid">
-          {[
-            { t: 'Sustainability', d: 'Low-impact materials, circular design, long service life.' },
-            { t: 'Community', d: 'Local jobs, local knowledge, shared stewardship.' },
-            { t: 'Safety', d: 'Risk-assessed trails, compliant structures, clear wayfinding.' },
-            { t: 'Compliance', d: 'Environmental clearances, standards adherence, transparent reporting.' }
-          ].map((p) => (
-            <div className="card" key={p.t}>
-              <h3>{p.t}</h3>
-              <p>{p.d}</p>
-            </div>
-          ))}
+    <main id="main">
+      <section className="about-hero" role="region" aria-labelledby="about-hero-title">
+        <div className="about-hero__overlay"></div>
+        <div className="container about-hero__inner">
+          <h1 id="about-hero-title" className="about-hero__title">About Amit Fibre Decor</h1>
+          <p className="about-hero__sub">Amit Fibre Decor partners with agencies and communities to create tourism experiences that protect nature while celebrating India’s rich cultural heritage.</p>
         </div>
-      </Section>
-      <Section title="Meet our team" subtitle="The people who deliver.">
-        <div className="team-grid">
-          {[
-            {
-              n: 'Mayur Vakani',
-              r: 'Project Lead',
-              img: '/assets/about/mayur-vakani.jpeg',
-              bio: 'Mayur brings strategic vision and project management expertise to every tourism and forest conservation initiative.',
-              quote: 'Every project is an opportunity to create lasting positive impact on both communities and ecosystems.',
-              achievements: ['10+ years project management', 'Forest conservation specialist', 'Community engagement expert']
-            },
-            {
-              n: 'Hemali Vakani',
-              r: 'Design & Community',
-              img: '/assets/about/hemali.jpeg',
-              bio: 'Born with an eye for detail and a heart drawn to textures and forms, Hemali guides our design philosophy with hands-on experience.',
-              quote: 'I believe that design can make the invisible visible—giving form to emotions, memories, and ideas that exist beyond words.',
-              achievements: ['Diploma in Sculpture', '15+ years cross-disciplinary practice', 'Featured in national exhibitions']
-            },
-            {
-              n: 'Anand Tike',
-              r: 'Engineering & Safety',
-              img: 'https://source.unsplash.com/random/640x480?sig=23&portrait',
-              bio: 'Anand ensures every structure meets the highest safety standards while maintaining harmony with natural environments.',
-              quote: 'Engineering excellence means building not just for today, but for generations to come.',
-              achievements: ['Civil Engineering degree', 'Safety compliance specialist', 'Sustainable construction expert']
-            }
-          ].map((m) => (
-            <div className="team-card" key={m.n}>
-              <div className="team-media">
-                <img src={m.img} alt={`${m.n} portrait`} />
-              </div>
-              <div>
-                <div className="team-header"><h3>{m.n}</h3></div>
-                <p className="team-role">{m.r}</p>
-                <p>{m.bio}</p>
-                <div className="team-quote">{m.quote}</div>
-                <ul className="team-list">
-                  {m.achievements.map((achievement, idx) => (
-                    <li key={idx}>{achievement}</li>
-                  ))}
-                </ul>
-                <div className="team-socials">
-                  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
-                  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FiInstagram /></a>
-                  <a href="mailto:amitfibredecor@gmail.com" aria-label="Email"><FiMail /></a>
-                </div>
-              </div>
-            </div>
-          ))}
+      </section>
+
+      <section className="about-founder">
+        <div className="container about-founder__grid">
+          <div>
+            <h2>Anand Tike</h2>
+            <p>With a Post Diploma in Sculpture earned in 2002, Anand Tike has dedicated over two decades to creating monumental works that bridge traditional Indian artistry with contemporary conservation needs.</p>
+            <p>His vision extends beyond mere aesthetics—each sculpture, each interpretation centre, and each project serves as a bridge between human communities and the natural world, fostering understanding and respect for our shared environment.</p>
+          </div>
+          <div className="about-founder__right">
+            <article className="about-card" aria-label="Conservation Impact">
+              <div className="about-card__title">Conservation Impact</div>
+              <p className="about-card__text">Contributed to wildlife interpretation centres across 15+ national parks and sanctuaries.</p>
+            </article>
+            <article className="about-card" aria-label="Scientific Collaboration">
+              <div className="about-card__title">Scientific Collaboration</div>
+              <p className="about-card__text">Works closely with IFS officers, ornithologists, and WII experts for accuracy.</p>
+            </article>
+            <article className="about-card" aria-label="Cultural Heritage">
+              <div className="about-card__title">Cultural Heritage</div>
+              <p className="about-card__text">Preserves traditional techniques while innovating for modern conservation needs.</p>
+            </article>
+          </div>
         </div>
-      </Section>
+      </section>
+
+      <section className="about-timeline">
+        <div className="container">
+          <div className="about-timeline__head">
+            <h2 className="about-timeline__title">Major Achievements</h2>
+            <p className="about-timeline__sub">A selection of landmark works underscoring our cultural and conservation impact.</p>
+          </div>
+          <div className="about-timeline__grid">
+            {[
+              { y: '2023', t: 'Lion Pride Sculpture — Ambardi', d: 'Record-setting ferro-cement wildlife composition commissioned by TCGL.', k: 'accent' },
+              { y: '2022', t: 'Namami Gange Exhibits', d: 'Eco-education exhibits in collaboration with WII for river conservation.', k: 'secondary' },
+              { y: '2019', t: 'Shivrajpur Beach Gates', d: 'Iconic coastal gateways enhancing visitor experience and identity.', k: 'gold' },
+              { y: '2016', t: 'Pandit Deendayal Bronze', d: 'Reliance Circle civic landmark bronze statue in Gandhinagar.', k: 'gold' }
+            ].map((a, i) => (
+              <article key={i} className="about-timeline__card" aria-label={`${a.y} — ${a.t}`}>
+                <div className="about-timeline__badge">{a.y}</div>
+                <div className="about-timeline__disc" aria-hidden>✨</div>
+                <div className="about-timeline__title-sm">{a.t}</div>
+                <div className="about-timeline__blurb">{a.d}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="about-team">
+        <div className="container">
+          <div className="about-team__head">
+            <h2 className="about-team__title">Meet Our Team</h2>
+            <p className="about-team__sub">A dedicated team of artists, engineers, and cultural specialists committed to excellence in every project.</p>
+          </div>
+          <div className="about-team__grid">
+            <article className="about-team__card" aria-labelledby="anand-heading">
+              <h3 id="anand-heading">Anand Tike</h3>
+              <div className="about-team__badge">Founder & Lead Sculptor</div>
+              <p className="about-team__muted" style={{ marginTop: 8 }}>Qualification: Post Diploma in Sculpture (2002)</p>
+              <p className="about-team__muted">Experience: 20+ years</p>
+              <p><span className="about-team__label">Specialization:</span> Monumental sculpture, conservation-aligned design</p>
+            </article>
+            <article className="about-team__card" aria-labelledby="mayur-heading">
+              <h3 id="mayur-heading">Mayur Vakani</h3>
+              <div className="about-team__badge">Project Director</div>
+              <p className="about-team__muted" style={{ marginTop: 8 }}>Qualification: Project Management</p>
+              <p className="about-team__muted">Experience: 10+ years</p>
+              <p><span className="about-team__label">Specialization:</span> Project leadership, forest conservation initiatives</p>
+            </article>
+            <article className="about-team__card" aria-labelledby="hemali-heading">
+              <h3 id="hemali-heading">Hemali Vakani</h3>
+              <div className="about-team__badge">Design Coordinator</div>
+              <p className="about-team__muted" style={{ marginTop: 8 }}>Qualification: Diploma in Sculpture</p>
+              <p className="about-team__muted">Experience: 15+ years</p>
+              <p><span className="about-team__label">Specialization:</span> Cross-disciplinary design, cultural storytelling</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-empanel">
+        <div className="container">
+          <h2>Empanelments & Recognition</h2>
+          <ul className="about-empanel__grid" role="list">
+            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Lalitkala Academy – Approved Sculptor</li>
+            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> iNDEXTb – Registered Vendor</li>
+            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Heritage Authority of Rajasthan – Empanelled Artist</li>
+            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> GEER Foundation – Conservation Partner</li>
+            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Ministry of Environment – Interpretation Centre Specialist</li>
+          </ul>
+        </div>
+      </section>
     </main>
   );
 }
 
-const PROJECTS = [
-  { id: 1, title: 'Eco Trail Signage – Gir Forest', category: 'Forest', year: 2024, location: 'Gir, Gujarat', desc: 'Modular reflective wayfinding with habitat-safe anchors.', details: 'A modular wayfinding system with reflective, low-energy materials and habitat-safe anchors.' },
-  { id: 2, title: 'Visitor Centre Revamp – Saputara', category: 'Tourism', year: 2023, location: 'Saputara, Dang', desc: 'Exhibit routing and shade-first queuing with native finishes.', details: 'Exhibit routing, ticketing flow, and shade-first queuing with native material finishes.' },
-  { id: 3, title: 'Wetland Boardwalk – Nalsarovar', category: 'Forest', year: 2023, location: 'Nalsarovar, Gujarat', desc: 'Elevated boardwalk with erosion control.', details: 'Elevated boardwalk with erosion control and bird-safe sightlines.' },
-  { id: 4, title: 'Heritage Trail – Polo Forest', category: 'Tourism', year: 2022, location: 'Vijaynagar, Gujarat', desc: 'Interpretive nodes and emergency wayfinding.', details: 'Interpretive nodes, rest points, and emergency wayfinding integrated into ruins.' },
-  { id: 5, title: 'Canopy Lookout – Shoolpaneshwar', category: 'Forest', year: 2022, location: 'Narmada, Gujarat', desc: 'Lightweight lookout with FRP beams.', details: 'Lightweight lookout deck with fibre-reinforced beams and wind-tested rails.' },
-  { id: 6, title: 'Campsite Amenities – Banni Grasslands', category: 'Tourism', year: 2021, location: 'Kutch, Gujarat', desc: 'Low-impact sanitation and night-safe lighting.', details: 'Low-impact sanitation, night-safe lighting, and waste segregation points.' },
-  { id: 7, title: 'Riverfront Trail Links', category: 'Tourism', year: 2021, location: 'Ahmedabad, Gujarat', desc: 'Seating pods and cyclist-safe merge zones.', details: 'Seating pods, native planting pockets, and cyclist-safe merge zones.' },
-  { id: 8, title: 'Habitat Buffer Fencing', category: 'Forest', year: 2020, location: 'Girnar, Gujarat', desc: 'Non-intrusive fences with animal corridors.', details: 'Non-intrusive fencing with animal corridors and maintenance gates.' }
-];
+// ProjectsPage now uses ProjectsGrid (central dataset)
 
 function ProjectsPage() {
-  const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState('All');
-  const [openId, setOpenId] = useState(null);
-
-  const filtered = PROJECTS.filter((p) =>
-    (filter === 'All' || p.category === filter) && p.title.toLowerCase().includes(query.toLowerCase())
-  );
-
-  const current = PROJECTS.find((p) => p.id === openId);
-
   return (
     <main id="main" className="container">
-      <Section title="Projects">
-        <div className="controls">
-          <input className="input" type="search" placeholder="Search by title..." aria-label="Search projects"
-            value={query} onChange={(e) => setQuery(e.target.value)} />
-          <Button className={filter === 'All' ? 'filter active' : 'filter'} variant="outline" size="sm" onClick={() => setFilter('All')} aria-pressed={filter === 'All'}>All</Button>
-          <Button className={filter === 'Tourism' ? 'filter active' : 'filter'} variant="outline" size="sm" onClick={() => setFilter('Tourism')} aria-pressed={filter === 'Tourism'}>Tourism</Button>
-          <Button className={filter === 'Forest' ? 'filter active' : 'filter'} variant="outline" size="sm" onClick={() => setFilter('Forest')} aria-pressed={filter === 'Forest'}>Forest</Button>
-        </div>
-
-        <div className="grid">
-          <AnimatePresence>
-            {filtered.map((p) => (
-              <motion.div key={p.id} className="card project-card"
-                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.2 }}
-              >
-                <img className="cover-img" alt="Project cover placeholder" src={`https://source.unsplash.com/random/640x360?sig=${p.id}&nature,forest`} />
-                <h3 style={{ marginBottom: 4 }}>{p.title}</h3>
-                <div className="project-meta">{p.location} • {p.year} • {p.category}</div>
-                <p className="clamp-2">{p.desc}</p>
-                <div style={{ marginTop: 12 }}>
-                  <Button variant="outline" size="sm" onClick={() => setOpenId(p.id)}>Learn more</Button>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-      </Section>
-
-      <Modal isOpen={!!openId} onClose={() => setOpenId(null)} title={current?.title} initialFocusRef={{ current: null }}>
-        {current && (
-          <div>
-            <img className="cover-img" alt="Project cover large" src={`https://source.unsplash.com/random/960x540?sig=${current.id}&landscape`} />
-            <p style={{ marginTop: 0 }}>{current.details}</p>
-          </div>
-        )}
-      </Modal>
+      <ProjectsGrid />
     </main>
   );
 }
