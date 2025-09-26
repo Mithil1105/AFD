@@ -308,6 +308,22 @@
   opacity: .5;
 }
 
+/* New landing hero with image overlay */
+.hero-landing {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 15, 31, 0.92), rgba(10, 15, 31, 0.70), rgba(10, 15, 31, 0));
+}
+
+[data-theme='day'] .hero-overlay {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0));
+}
+
 /* Cards */
 .grid {
   display: grid;
@@ -750,4 +766,48 @@
   border: 1.5px solid rgba(255, 255, 255, 0.16);
   background: rgba(0, 255, 245, 0.06);
   margin-top: 6px;
+}
+
+/* Chips + controls (retained for ProjectsGrid) */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.input {
+  background: #0A1022;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  min-width: 260px;
+}
+
+[data-theme='day'] .input {
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  color: #0A0F1F;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+
+.chip.active {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--shadow-neon-hover);
+}
+
+[data-theme='day'] .chip {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
 }
