@@ -4,25 +4,16 @@ import { HashRouter, Routes, Route, NavLink, useLocation } from 'react-router-do
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiLinkedin, FiInstagram, FiMail, FiSun, FiMoon } from 'react-icons/fi';
 
-import Hero from './sections/home/Hero';
-import MajorAchievements from './sections/home/MajorAchievements';
-import WhatWeDo from './sections/home/WhatWeDo';
-import './styles/home.css';
-import ProjectsGrid from './sections/about/ProjectsGrid';
 import './styles/about.css';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import About from './pages/About';
 
 function useScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [pathname]);
 }
 
-function Button({ as: As = 'button', variant = 'primary', size = 'md', to, href, children, className = '', ...rest }) {
-  const classes = ['btn', `btn-${variant}`, `btn-${size}`, className].join(' ').trim();
-  if (As === 'a' || href) return <a className={classes} href={href || to} {...rest}>{children}</a>;
-  if (As === NavLink && to) return <NavLink className={({ isActive }) => classes + (isActive ? ' active' : '')} to={to} {...rest}>{children}</NavLink>;
-  if (As === 'link' && to) return <NavLink className={classes} to={to} {...rest}>{children}</NavLink>;
-  return <As className={classes} {...rest}>{children}</As>;
-}
 
 function Section({ title, subtitle, children, id }) {
   return (
@@ -42,39 +33,6 @@ function Section({ title, subtitle, children, id }) {
 
 // Removed unused Tag component to clear linter warnings
 
-function Modal({ isOpen, onClose, title, children, initialFocusRef }) {
-  const backdropRef = useRef(null);
-  const lastActive = useRef(null);
-  useEffect(() => {
-    if (!isOpen) return;
-    lastActive.current = document.activeElement;
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-    if (initialFocusRef?.current) initialFocusRef.current.focus();
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      if (lastActive.current && lastActive.current.focus) lastActive.current.focus();
-    };
-  }, [isOpen, onClose, initialFocusRef]);
-
-  if (!isOpen) return null;
-  return (
-    <AnimatePresence>
-      <motion.div className="modal-backdrop" role="dialog" aria-modal="true" aria-label={title}
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-        onMouseDown={(e) => { if (e.target === backdropRef.current) onClose(); }} ref={backdropRef}
-      >
-        <motion.div className="modal-dialog" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 10, opacity: 0 }}>
-          <div className="modal-header">
-            <h3 style={{ margin: 0 }}>{title}</h3>
-            <button className="modal-close" onClick={onClose} aria-label="Close modal"><FiX /></button>
-          </div>
-          <div className="modal-body">{children}</div>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
-  );
-}
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -199,20 +157,11 @@ function Footer() {
   );
 }
 
-function HomePage() {
-  return (
-    <main id="main">
-      <Hero />
-      <WhatWeDo />
-      <MajorAchievements />
-    </main>
-  );
-}
 
 function AboutPage() {
   return (
     <main id="main">
-      <section className="about-hero" role="region" aria-labelledby="about-hero-title">
+      <section className="about-hero" aria-labelledby="about-hero-title">
         <div className="about-hero__overlay"></div>
         <div className="container about-hero__inner">
           <h1 id="about-hero-title" className="about-hero__title">About Amit Fibre Decor</h1>
@@ -303,12 +252,12 @@ function AboutPage() {
       <section className="about-empanel">
         <div className="container">
           <h2>Empanelments & Recognition</h2>
-          <ul className="about-empanel__grid" role="list">
-            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Lalitkala Academy – Approved Sculptor</li>
-            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> iNDEXTb – Registered Vendor</li>
-            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Heritage Authority of Rajasthan – Empanelled Artist</li>
-            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> GEER Foundation – Conservation Partner</li>
-            <li role="listitem" className="about-pill"><span className="about-pill__dot"></span> Ministry of Environment – Interpretation Centre Specialist</li>
+          <ul className="about-empanel__grid">
+            <li className="about-pill"><span className="about-pill__dot"></span> Lalitkala Academy – Approved Sculptor</li>
+            <li className="about-pill"><span className="about-pill__dot"></span> iNDEXTb – Registered Vendor</li>
+            <li className="about-pill"><span className="about-pill__dot"></span> Heritage Authority of Rajasthan – Empanelled Artist</li>
+            <li className="about-pill"><span className="about-pill__dot"></span> GEER Foundation – Conservation Partner</li>
+            <li className="about-pill"><span className="about-pill__dot"></span> Ministry of Environment – Interpretation Centre Specialist</li>
           </ul>
         </div>
       </section>
@@ -316,15 +265,6 @@ function AboutPage() {
   );
 }
 
-// ProjectsPage now uses ProjectsGrid (central dataset)
-
-function ProjectsPage() {
-  return (
-    <main id="main" className="container">
-      <ProjectsGrid />
-    </main>
-  );
-}
 
 function ContactPage() {
   return (
@@ -363,9 +303,9 @@ function AppShell() {
       <AnimatePresence mode="wait">
         <motion.div key={location.pathname} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.2 }}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
           <Footer />
