@@ -4,17 +4,14 @@ import {
     FiAward,
     FiHome,
     FiUsers,
-    FiCalendar,
-    FiFilter,
-    FiChevronDown,
     FiMapPin,
     FiStar,
-    FiBriefcase
+    FiBriefcase,
+    FiFilter
 } from 'react-icons/fi';
 
 const About = () => {
     const [timelineFilter, setTimelineFilter] = useState('All');
-    const [timelineView, setTimelineView] = useState('Detailed');
 
     const timelineData = [
         {
@@ -104,19 +101,7 @@ const About = () => {
             name: 'Anand Tike',
             role: 'Founder & Principal Sculptor',
             description: 'Post Diploma in Sculpture (2002). 20+ years of experience in monumental sculptures and eco-tourism infrastructure.',
-            image: '/assets/about/anand-tike.jpg'
-        },
-        {
-            name: 'Mayur Vakani',
-            role: 'Project Director',
-            description: 'Specializing in large-scale installations and government project coordination.',
-            image: null
-        },
-        {
-            name: 'Hemali Vakani',
-            role: 'Design & Planning Head',
-            description: 'Expert in eco-tourism planning and sustainable infrastructure design.',
-            image: null
+            image: '/assets/about/Anandtike.jpg'
         }
     ];
 
@@ -316,11 +301,9 @@ const About = () => {
                                             {item.title}
                                         </h3>
 
-                                        {timelineView === 'Detailed' && (
-                                            <p className="about-timeline__card-description">
-                                                {item.description}
-                                            </p>
-                                        )}
+                                        <p className="about-timeline__card-description">
+                                            {item.description}
+                                        </p>
 
                                         <span className="badge badge-outline badge-sm">
                                             {item.type}

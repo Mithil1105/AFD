@@ -140,16 +140,55 @@ const Home = () => {
             <section className="achievements">
                 <div className="container">
                     <h2 className="section-title">Major Achievements</h2>
-                    <div className="achievements-ribbon scrollbar-hide">
-                        {achievements.map((achievement, index) => (
-                            <div key={index} className="card achievement-card">
-                                <div className="achievement-year">{achievement.year}</div>
-                                <h3 className="achievement-title">{achievement.title}</h3>
-                                <span className={`badge badge-${getBadgeColor(achievement.type)}`}>
-                                    {achievement.type}
-                                </span>
+                    <p className="section-subtitle">Iconic milestones that define our journey in sculptural excellence and eco-cultural heritage.</p>
+                    <div className="achievements-grid achievements-grid-1x3">
+                        <div className="card achievement-card">
+                            <div className="achievement-media">
+                                <video
+                                    className="achievement-video"
+                                    controls
+                                    poster="/assets/achievements/lion-sculpture-poster.jpg"
+                                >
+                                    <source src="/assets/videos/lion-sculpture.mp4" type="video/mp4" />
+                                    <source src="/assets/videos/lion-sculpture.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
-                        ))}
+                            <div className="achievement-year">2023</div>
+                            <h3 className="achievement-title">Lion Pride Sculpture</h3>
+                            <p className="achievement-description">World's largest Asiatic Lion Pride Sculpture installation with comprehensive wildlife interpretation center.</p>
+                            <span className="badge badge-accent">Achievement</span>
+                        </div>
+                        <div className="card achievement-card">
+                            <div className="achievement-media">
+                                <img
+                                    src="/assets/achievements/namami-gange.jpg"
+                                    alt="Namami Gange Project"
+                                    className="achievement-image"
+                                />
+                            </div>
+                            <div className="achievement-year">2022</div>
+                            <h3 className="achievement-title">Namami Gange Project</h3>
+                            <p className="achievement-description">Eco-tourism infrastructure for river conservation initiative with interactive displays and educational installations.</p>
+                            <span className="badge badge-forest">Government</span>
+                        </div>
+                        <div className="card achievement-card">
+                            <div className="achievement-media">
+                                <video
+                                    className="achievement-video"
+                                    controls
+                                    poster="/assets/achievements/modi-statue-poster.jpg"
+                                >
+                                    <source src="/assets/videos/modi-statue.mp4" type="video/mp4" />
+                                    <source src="/assets/videos/modi-statue.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div className="achievement-year">2021</div>
+                            <h3 className="achievement-title">Modi Statue Commission</h3>
+                            <p className="achievement-description">Prestigious commission for national monument showcasing our expertise in monumental sculpture work.</p>
+                            <span className="badge badge-accent">Achievement</span>
+                        </div>
                     </div>
                     <div className="achievements-cta">
                         <button className="btn btn-outline">

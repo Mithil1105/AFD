@@ -9,6 +9,15 @@
   --gold: hsl(48, 92%, 58%);
   --bronze: hsl(30, 58%, 40%);
 
+  /* Updated theme variables */
+  --bg: #f9f8f6;
+  --text: #1b1b1b;
+  --muted: #666;
+  --forest: #2e7d32;
+  --earth: #a05d2f;
+  --accent: #c62828;
+  --radius: 12px;
+
   /* Legacy variables for compatibility */
   --navy: var(--forest);
   --bg: var(--stone);
@@ -59,6 +68,14 @@
   --text: hsl(42, 14%, 92%);
   --gold: hsl(48, 92%, 58%);
   --bronze: hsl(30, 58%, 40%);
+
+  /* Dark mode theme variables */
+  --bg: #111;
+  --text: #f9f9f9;
+  --muted: #bbb;
+  --forest: #66bb6a;
+  --earth: #d7a574;
+  --accent: #ef5350;
 
   /* Legacy variables for compatibility */
   --navy: var(--forest);
