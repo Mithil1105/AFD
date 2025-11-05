@@ -7,6 +7,8 @@ const OptimizedImage = ({
     width = 400,
     height = 300,
     quality = 80,
+    fit = 'cover', // 'cover' or 'contain'
+    background = 'transparent',
     ...props
 }) => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -131,7 +133,8 @@ const OptimizedImage = ({
                         transition: 'opacity 0.3s ease-in-out',
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover'
+                        objectFit: fit,
+                        backgroundColor: background
                     }}
                     loading="lazy"
                     decoding="async"

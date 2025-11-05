@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FiSearch, FiMapPin, FiCalendar, FiArrowRight, FiUsers, FiAward } from 'react-icons/fi';
 import ProjectsMap from '../components/ProjectsMap';
 import Modal from '../components/Modal';
 import OptimizedImage from '../components/OptimizedImage';
+import Lightbox from '../components/Lightbox';
 
 const Projects = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -13,7 +14,10 @@ const Projects = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [projectImages, setProjectImages] = useState({});
     const [showAllImages, setShowAllImages] = useState(false);
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
     const projectRefs = useRef({});
+    const location = useLocation();
 
     // Lazy load images only when modal is opened
     const loadProjectImages = (projectFolderName) => {
@@ -414,6 +418,17 @@ const Projects = () => {
         { icon: FiAward, value: '20+', label: 'Years Experience' }
     ];
 
+    // If navigated with a requested project, open its modal
+    useEffect(() => {
+        const requested = location.state && location.state.openProjectTitle;
+        if (!requested) return;
+        const match = projects.find(p => p.title.toLowerCase() === String(requested).toLowerCase());
+        if (match) {
+            handleLearnMore(match);
+        }
+    // only run when location.state changes
+    }, [location.state]);
+
     return (
         <main className="projects">
             {/* Hero Section */}
@@ -607,20 +622,22 @@ const Projects = () => {
                                     Project Gallery ({projectImages[selectedProject.folderName].length} images)
                                 </h3>
                                 <div className="project-modal__gallery-grid">
-                                    {(showAllImages ? projectImages[selectedProject.folderName] : projectImages[selectedProject.folderName].slice(0, 20)).map((image, index) => (
-                                        <div key={index} className="project-modal__gallery-item">
+                                    {(showAllImages ? projectImages[selectedProject.folderName] : projectImages[selectedProject.folderName].slice(0, 24)).map((image, index) => (
+                                        <div key={index} className="project-modal__gallery-item" onClick={() => { setLightboxIndex(index); setLightboxOpen(true); }}>
                                             <OptimizedImage
                                                 src={image}
                                                 alt={`${selectedProject.title} ${index + 1}`}
                                                 width={300}
                                                 height={225}
                                                 quality={80}
+                                                fit="contain"
+                                                background="var(--background)"
                                             />
                                         </div>
                                     ))}
-                                    {!showAllImages && projectImages[selectedProject.folderName].length > 20 && (
+                                    {!showAllImages && projectImages[selectedProject.folderName].length > 24 && (
                                         <div className="project-modal__gallery-more">
-                                            <p>+{projectImages[selectedProject.folderName].length - 20} more images</p>
+                                            <p>+{projectImages[selectedProject.folderName].length - 24} more images</p>
                                             <button
                                                 className="btn btn-outline"
                                                 onClick={() => setShowAllImages(true)}
@@ -635,6 +652,14 @@ const Projects = () => {
                     </div>
                 )}
             </Modal>
+            {selectedProject && (
+                <Lightbox
+                    images={projectImages[selectedProject.folderName] || []}
+                    startIndex={lightboxIndex}
+                    isOpen={lightboxOpen}
+                    onClose={() => setLightboxOpen(false)}
+                />
+            )}
         </main>
     );
 };

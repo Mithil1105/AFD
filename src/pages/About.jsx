@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import anandImg from '../assets/about/Anandtike.jpg';
 import {
     FiUser,
     FiAward,
@@ -12,6 +14,16 @@ import {
 
 const About = () => {
     const [timelineFilter, setTimelineFilter] = useState('All');
+    const navigate = useNavigate();
+
+    const mapTimelineTitleToProject = (title) => {
+        const mapping = {
+            'Lion Pride Sculpture World Record': 'Ambardi Safari Park',
+            'Namami Gange Project': 'Shivraj Pur',
+            'CMS COP-13 Wildlife Installation': 'Butterfly Park'
+        };
+        return mapping[title] || title;
+    };
 
     const timelineData = [
         {
@@ -101,7 +113,7 @@ const About = () => {
             name: 'Anand Tike',
             role: 'Founder & Principal Sculptor',
             description: 'Post Diploma in Sculpture (2002). 20+ years of experience in monumental sculptures and eco-tourism infrastructure.',
-            image: '/assets/about/Anandtike.jpg'
+            image: anandImg
         }
     ];
 
@@ -180,7 +192,7 @@ const About = () => {
                         <div className="about-founder__right">
                             <div className="about-founder__image">
                                 <img
-                                    src="/assets/about/anand-tike.jpg"
+                                    src={anandImg}
                                     alt="Anand Tike, Founder of Amit Fibre Decor"
                                     className="about-founder__img"
                                 />
@@ -286,7 +298,13 @@ const About = () => {
                                     </div>
 
                                     {/* Content Card */}
-                                    <div className="about-timeline__card">
+                                    <div
+                                        className="about-timeline__card"
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => navigate('/projects', { state: { openProjectTitle: mapTimelineTitleToProject(item.title) } })}
+                                        onKeyDown={(e) => { if (e.key === 'Enter') navigate('/projects', { state: { openProjectTitle: mapTimelineTitleToProject(item.title) } }); }}
+                                    >
                                         <div className="about-timeline__card-header">
                                             <span className={`badge ${getCategoryColor(item.category)}`}>
                                                 {item.category}

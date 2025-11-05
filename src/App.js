@@ -8,6 +8,8 @@ import './styles/about.css';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -141,6 +143,8 @@ function Footer() {
               <li><NavLink to="/about" className="footer-muted">About</NavLink></li>
               <li><NavLink to="/projects" className="footer-muted">Projects</NavLink></li>
               <li><NavLink to="/contact" className="footer-muted">Contact</NavLink></li>
+              <li><NavLink to="/privacy" className="footer-muted">Privacy Policy</NavLink></li>
+              <li><NavLink to="/terms" className="footer-muted">Terms & Conditions</NavLink></li>
             </ul>
           </nav>
         </div>
@@ -200,6 +204,8 @@ function AppShell() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
           <Footer />

@@ -1,6 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart, FiShield } from 'react-icons/fi';
+import backgroundImage from '../assets/about/background.jpg';
+import lionPrideVideo from '../assets/videos/lION_PRIDE.mp4';
+import imgShivraj from '../assets/Project/Shivraj pur/04.jpg';
+import imgRakshak from '../assets/Project/Rakshak Van/DSC02129.jpg';
 
 const Home = () => {
     const achievements = [
@@ -48,7 +52,11 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero">
                 <div className="hero-background">
-                    <img src="/assets/hero-sculpture.jpg" alt="Sculpture in forest setting" />
+                    <img
+                        src={backgroundImage}
+                        alt="Sculpture in forest setting"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                    />
                     <div className="hero-overlay"></div>
                 </div>
                 <div className="hero-content">
@@ -147,47 +155,33 @@ const Home = () => {
                                 <video
                                     className="achievement-video"
                                     controls
-                                    poster="/assets/achievements/lion-sculpture-poster.jpg"
                                 >
-                                    <source src="/assets/videos/lion-sculpture.mp4" type="video/mp4" />
-                                    <source src="/assets/videos/lion-sculpture.webm" type="video/webm" />
+                                    <source src={lionPrideVideo} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>
+                                <span className="achievement-chip badge badge-accent">Achievement</span>
                             </div>
                             <div className="achievement-year">2023</div>
                             <h3 className="achievement-title">Lion Pride Sculpture</h3>
                             <p className="achievement-description">World's largest Asiatic Lion Pride Sculpture installation with comprehensive wildlife interpretation center.</p>
-                            <span className="badge badge-accent">Achievement</span>
                         </div>
                         <div className="card achievement-card">
                             <div className="achievement-media">
-                                <img
-                                    src="/assets/achievements/namami-gange.jpg"
-                                    alt="Namami Gange Project"
-                                    className="achievement-image"
-                                />
+                                <img src={imgShivraj} alt="Shivrajpur Beach Gates" className="achievement-image" />
+                                <span className="achievement-chip badge badge-forest">Tourism</span>
                             </div>
-                            <div className="achievement-year">2022</div>
-                            <h3 className="achievement-title">Namami Gange Project</h3>
-                            <p className="achievement-description">Eco-tourism infrastructure for river conservation initiative with interactive displays and educational installations.</p>
-                            <span className="badge badge-forest">Government</span>
+                            <div className="achievement-year">2019</div>
+                            <h3 className="achievement-title">Shivrajpur Beach Gates</h3>
+                            <p className="achievement-description">Iconic coastal gateway with two main gates and one entry gate enhancing visitor experience.</p>
                         </div>
                         <div className="card achievement-card">
                             <div className="achievement-media">
-                                <video
-                                    className="achievement-video"
-                                    controls
-                                    poster="/assets/achievements/modi-statue-poster.jpg"
-                                >
-                                    <source src="/assets/videos/modi-statue.mp4" type="video/mp4" />
-                                    <source src="/assets/videos/modi-statue.webm" type="video/webm" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                <img src={imgRakshak} alt="Rakshak Van" className="achievement-image" />
+                                <span className="achievement-chip badge badge-forest">Government</span>
                             </div>
-                            <div className="achievement-year">2021</div>
-                            <h3 className="achievement-title">Modi Statue Commission</h3>
-                            <p className="achievement-description">Prestigious commission for national monument showcasing our expertise in monumental sculpture work.</p>
-                            <span className="badge badge-accent">Achievement</span>
+                            <div className="achievement-year">2020</div>
+                            <h3 className="achievement-title">Rakshak Van</h3>
+                            <p className="achievement-description">Security and protection themed installations with murals and educational displays.</p>
                         </div>
                     </div>
                     <div className="achievements-cta">

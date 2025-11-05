@@ -61,7 +61,7 @@
 /* Night theme (dark mode) */
 :root[data-theme='night'] {
   /* Dark theme HSL tokens */
-  --moss: hsl(98, 52%, 58%);
+  --moss: hsl(45, 35%, 35%);
   --forest: hsl(150, 10%, 7%);
   --earth: hsl(16, 62%, 56%);
   --stone: hsl(150, 7%, 11%);
@@ -73,7 +73,7 @@
   --bg: #111;
   --text: #f9f9f9;
   --muted: #bbb;
-  --forest: #66bb6a;
+  --forest: #4a5d23;
   --earth: #d7a574;
   --accent: #ef5350;
 
@@ -88,7 +88,7 @@
 
   /* Additional theme variables */
   --accent: var(--moss);
-  --gradient-nature: linear-gradient(135deg, var(--moss), hsl(98, 52%, 68%));
+  --gradient-nature: linear-gradient(135deg, var(--moss), hsl(45, 35%, 45%));
   --gradient-earth: linear-gradient(135deg, var(--earth), hsl(16, 62%, 66%));
   --gradient-hero: linear-gradient(135deg, var(--forest), hsl(150, 10%, 12%));
   --card: var(--stone);
@@ -99,7 +99,7 @@
   --muted-foreground: var(--muted);
   --primary: var(--moss);
   --secondary: var(--earth);
-  --shadow-neon-hover: 0 0 32px hsla(98, 52%, 58%, 0.30);
+  --shadow-neon-hover: 0 0 32px hsla(45, 35%, 35%, 0.30);
 }
 
 /* Base Reset */

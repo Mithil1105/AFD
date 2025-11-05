@@ -1,16 +1,22 @@
 import React from 'react';
-import heroImage from '../../assets/about/background.jpg';
 
 export default function Hero() {
     return (
         <section className="hero-landing" style={{ minHeight: '88vh', position: 'relative', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
             <img
-                src={heroImage}
-                alt="Stone heritage archway in a forest setting representing Amit Fibre Decor’s sculptural eco-tourism work."
+                src="/assets/background.jpg"
+                alt="Stone heritage archway in a forest setting representing Amit Fibre Decor's sculptural eco-tourism work."
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    zIndex: 0
+                }}
             />
             <div className="hero-overlay" aria-hidden="true"></div>
 
