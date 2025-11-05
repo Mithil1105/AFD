@@ -1,23 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart, FiShield } from 'react-icons/fi';
+import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart } from 'react-icons/fi';
 import backgroundImage from '../assets/about/background.jpg';
 import lionPrideVideo from '../assets/videos/lION_PRIDE.mp4';
 import imgShivraj from '../assets/Project/Shivraj pur/04.jpg';
 import imgRakshak from '../assets/Project/Rakshak Van/DSC02129.jpg';
 
 const Home = () => {
-    const achievements = [
-        { year: '2023', title: 'Lion Pride Sculpture', type: 'Achievement' },
-        { year: '2022', title: 'Namami Gange Project', type: 'Government' },
-        { year: '2021', title: 'Modi Statue Commission', type: 'Achievement' },
-        { year: '2020', title: 'CMS COP-13 Installation', type: 'Government' },
-        { year: '2019', title: 'Shivrajpur Beach Gates', type: 'Private' },
-        { year: '2018', title: 'GEER Butterfly Park', type: 'Government' },
-        { year: '2016', title: 'Pandit Deendayal Bronze', type: 'Private' },
-        { year: '2014', title: 'Republic Day First Prize', type: 'Achievement' }
-    ];
-
     const organizations = [
         { name: 'Lalitkala Academy', initials: 'LA', type: 'accent' },
         { name: 'iNDEXTb', initials: 'iN', type: 'forest' },
@@ -28,15 +16,6 @@ const Home = () => {
         { name: 'Smruti Gardens', initials: 'SG', type: 'accent' },
         { name: 'Gujarat Kidney', initials: 'GK', type: 'forest' }
     ];
-
-    const getBadgeColor = (type) => {
-        switch (type) {
-            case 'Achievement': return 'accent';
-            case 'Government': return 'forest';
-            case 'Private': return 'earth';
-            default: return 'accent';
-        }
-    };
 
     const getOrgBgColor = (type) => {
         switch (type) {

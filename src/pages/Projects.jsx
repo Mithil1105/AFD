@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FiSearch, FiMapPin, FiCalendar, FiArrowRight, FiUsers, FiAward } from 'react-icons/fi';
 import ProjectsMap from '../components/ProjectsMap';
@@ -238,7 +238,7 @@ const Projects = () => {
     };
 
     // Load images only when modal opens
-    const handleLearnMore = (project) => {
+    const handleLearnMore = useCallback((project) => {
         setSelectedProject(project);
         setIsModalOpen(true);
         setShowAllImages(false); // Reset to show only first 20 images
@@ -249,7 +249,7 @@ const Projects = () => {
             ...prev,
             [project.folderName]: images
         }));
-    };
+    }, []);
 
     const projects = [
         {
@@ -426,7 +426,7 @@ const Projects = () => {
         if (match) {
             handleLearnMore(match);
         }
-    // only run when location.state changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.state]);
 
     return (
