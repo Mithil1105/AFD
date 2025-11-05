@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://nehal.github.io/afd",
+  "homepage": "https://mithil1105.github.io/AFD",
   "eslintConfig": {
     "extends": [
       "react-app",
