@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/AFD/static/css/main.6c4129b8.css",
-    "main.js": "/AFD/static/js/main.102746b5.js",
-    "static/js/455.57a6ad68.chunk.js": "/AFD/static/js/455.57a6ad68.chunk.js",
+    "main.css": "/AFD/static/css/main.94b09ba0.css",
+    "main.js": "/AFD/static/js/main.b483b990.js",
+    "static/js/455.4fbedeec.chunk.js": "/AFD/static/js/455.4fbedeec.chunk.js",
     "static/js/462.61b7438a.chunk.js": "/AFD/static/js/462.61b7438a.chunk.js",
     "static/media/lION_PRIDE.mp4": "/AFD/static/media/lION_PRIDE.a2c5b6c0d2009eb14848.mp4",
     "static/media/DSC09969.jpg": "/AFD/static/media/DSC09969.b05d155aeb449463fd10.jpg",
@@ -189,13 +189,13 @@
     "static/media/IMG-20191027-WA0045.jpg": "/AFD/static/media/IMG-20191027-WA0045.b41f499f79fc730d9012.jpg",
     "static/media/Dinosaur Model.jpeg": "/AFD/static/media/Dinosaur Model.caf4755f3d65064508dc.jpeg",
     "index.html": "/AFD/index.html",
-    "main.6c4129b8.css.map": "/AFD/static/css/main.6c4129b8.css.map",
-    "main.102746b5.js.map": "/AFD/static/js/main.102746b5.js.map",
-    "455.57a6ad68.chunk.js.map": "/AFD/static/js/455.57a6ad68.chunk.js.map",
+    "main.94b09ba0.css.map": "/AFD/static/css/main.94b09ba0.css.map",
+    "main.b483b990.js.map": "/AFD/static/js/main.b483b990.js.map",
+    "455.4fbedeec.chunk.js.map": "/AFD/static/js/455.4fbedeec.chunk.js.map",
     "462.61b7438a.chunk.js.map": "/AFD/static/js/462.61b7438a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c4129b8.css",
-    "static/js/main.102746b5.js"
+    "static/css/main.94b09ba0.css",
+    "static/js/main.b483b990.js"
   ]
 }
