@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FiSearch, FiMapPin, FiCalendar, FiArrowRight, FiUsers, FiAward } from 'react-icons/fi';
-import ProjectsMap from '../components/ProjectsMap';
 import Modal from '../components/Modal';
 import OptimizedImage from '../components/OptimizedImage';
 import Lightbox from '../components/Lightbox';
+import ProjectMap from '../components/ProjectMap';
+import ProjectModal from '../components/ProjectModal';
 
 const Projects = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -15,6 +16,7 @@ const Projects = () => {
     const [projectImages, setProjectImages] = useState({});
     const [showAllImages, setShowAllImages] = useState(false);
     const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [activeProject, setActiveProject] = useState(null);
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const projectRefs = useRef({});
     const location = useLocation();
@@ -255,9 +257,12 @@ const Projects = () => {
         {
             id: 1,
             title: 'Ambardi Safari Park',
+            name: 'Ambardi Safari Park',
             type: 'Forest',
             year: '2023',
             location: 'Dhari, Amreli',
+            lat: 21.2,
+            lng: 71.6,
             description: 'World\'s largest Asiatic Lion Pride Sculpture installation with comprehensive wildlife interpretation center.',
             features: ['Ferro-cement construction', 'Wildlife interpretation center', 'TCGL commission', 'Limca 2025 record'],
             image: require('../assets/Project/Ambardi Safari Park/Lion Family.jpg'),
@@ -266,9 +271,12 @@ const Projects = () => {
         {
             id: 2,
             title: 'Sasan Gir',
+            name: 'Sasan Gir',
             type: 'Forest',
             year: '2019',
             location: 'Gir Forest, Gujarat',
+            lat: 21.0,
+            lng: 70.8,
             description: 'Comprehensive wildlife education center with interactive displays and bronze lion sculptures.',
             features: ['Interactive displays', 'Bronze sculptures', 'Wildlife education', 'AV systems'],
             image: require('../assets/Project/Sasan Gir/IMG_1187.JPG'),
@@ -277,9 +285,12 @@ const Projects = () => {
         {
             id: 3,
             title: 'Jim Corbett',
+            name: 'Jim Corbett',
             type: 'Forest',
             year: '2019',
             location: 'Uttarakhand',
+            lat: 29.5,
+            lng: 78.9,
             description: 'Interpretation Centre & Exhibition at Corbett Tiger Reserve with educational installations.',
             features: ['Educational installations', 'Interactive displays', 'Wildlife education', 'Conservation awareness'],
             image: require('../assets/Project/jim Corbett/Diorama.jpg'),
@@ -288,9 +299,12 @@ const Projects = () => {
         {
             id: 4,
             title: 'Kaziranga',
+            name: 'Kaziranga',
             type: 'Forest',
             year: '2021',
             location: 'Assam',
+            lat: 26.6,
+            lng: 93.2,
             description: 'Exhibition work at WTI Centre, Kaziranga Park with wildlife conservation focus.',
             features: ['Wildlife conservation', 'Educational exhibits', 'Interactive displays', 'Conservation awareness'],
             image: require('../assets/Project/Kaziranga/IMG_5541.jpg'),
@@ -299,9 +313,12 @@ const Projects = () => {
         {
             id: 5,
             title: 'Shivraj Pur',
+            name: 'Shivraj Pur',
             type: 'Tourism',
             year: '2019',
             location: 'Dwarka, Gujarat',
+            lat: 22.2,
+            lng: 68.9,
             description: 'Iconic coastal gateway with two main gates and one entry gate enhancing visitor experience.',
             features: ['Coastal gateway', 'Visitor experience', 'Iconic design', 'Entry gates'],
             image: require('../assets/Project/Shivraj pur/04.jpg'),
@@ -310,9 +327,12 @@ const Projects = () => {
         {
             id: 6,
             title: 'Butterfly Park',
+            name: 'Butterfly Park',
             type: 'Forest',
             year: '2018',
             location: 'Gandhinagar',
+            lat: 23.2,
+            lng: 72.6,
             description: 'Butterfly Park development at Aranya Park, GEER Foundation with interpretive design.',
             features: ['Interpretive design', 'Biodiversity education', 'Butterfly conservation', 'Educational displays'],
             image: require('../assets/Project/Butterfly Park/DSC07516.jpg'),
@@ -321,9 +341,12 @@ const Projects = () => {
         {
             id: 7,
             title: 'Nature Park',
+            name: 'Nature Park',
             type: 'Tourism',
             year: '2021',
             location: 'Ahmedabad',
+            lat: 23.0,
+            lng: 72.6,
             description: 'Fibreglass installations and metal sculpture grill at Nature Park, Science City.',
             features: ['Fibreglass installations', 'Metal sculptures', 'Science education', 'Interactive displays'],
             image: require('../assets/Project/Nature Park/Dinosaur Model.jpeg'),
@@ -332,9 +355,12 @@ const Projects = () => {
         {
             id: 8,
             title: 'Fossil Park',
+            name: 'Fossil Park',
             type: 'Tourism',
             year: '2022',
             location: 'Jharkhand',
+            lat: 25.0,
+            lng: 87.8,
             description: 'Santhal tribal diorama at Rajmahal Fossil Park with educational installations.',
             features: ['Tribal diorama', 'Educational installations', 'Cultural heritage', 'Fossil education'],
             image: require('../assets/Project/Fossil Park/DSC01536.jpg'),
@@ -343,9 +369,12 @@ const Projects = () => {
         {
             id: 9,
             title: 'Arogya Van',
+            name: 'Arogya Van',
             type: 'Forest',
             year: '2020',
             location: 'Gujarat',
+            lat: 23.2,
+            lng: 72.6,
             description: 'Comprehensive health and wellness themed park with yoga installations and medicinal plant displays.',
             features: ['Yoga installations', 'Medicinal plants', 'Health education', 'Wellness displays'],
             image: require('../assets/Project/Arogya Van/016.jpg'),
@@ -354,9 +383,12 @@ const Projects = () => {
         {
             id: 10,
             title: 'Vibrant Gujarat 2024',
+            name: 'Vibrant Gujarat 2024',
             type: 'Tourism',
             year: '2024',
             location: 'Gandhinagar',
+            lat: 23.2,
+            lng: 72.6,
             description: 'Exhibition stall design and installations for the Vibrant Gujarat Global Summit.',
             features: ['Exhibition design', 'Interactive displays', 'Brand installations', 'Event management'],
             image: require('../assets/Project/Vibrant Gujarat 2024/20240110_131310.jpg'),
@@ -365,9 +397,12 @@ const Projects = () => {
         {
             id: 11,
             title: 'Tripura',
+            name: 'Tripura',
             type: 'Tourism',
             year: '2021',
             location: 'Tripura',
+            lat: 23.8,
+            lng: 91.3,
             description: 'Birds diorama and educational installations for the state museum and cultural center.',
             features: ['Bird diorama', 'Cultural displays', 'Educational installations', 'Museum exhibits'],
             image: require('../assets/Project/Tripura/Birds Diorama.jpg'),
@@ -376,9 +411,12 @@ const Projects = () => {
         {
             id: 12,
             title: 'Rakshak Van',
+            name: 'Rakshak Van',
             type: 'Forest',
             year: '2020',
             location: 'Gujarat',
+            lat: 23.2,
+            lng: 72.6,
             description: 'Security and protection themed installations with murals and educational displays.',
             features: ['Security murals', 'Protection displays', 'Educational content', 'Interactive exhibits'],
             image: require('../assets/Project/Rakshak Van/DSC02129.jpg'),
@@ -392,6 +430,19 @@ const Projects = () => {
         setSelectedProject(null);
         setShowAllImages(false);
     };
+
+    // Handler for opening project from map - use existing detailed modal
+    const handleOpenProject = useCallback((project) => {
+        // Find the full project object from the projects array
+        const fullProject = projects.find(p => (p.id === project.id) || (p.title === project.title) || (p.name === project.name));
+        if (fullProject) {
+            handleLearnMore(fullProject);
+        } else {
+            // Fallback: use simple modal if project not found
+            const images = project.folderName ? loadProjectImages(project.folderName) : [];
+            setActiveProject({ ...project, images, shortDesc: project.description || project.shortDesc });
+        }
+    }, [projects, handleLearnMore]);
 
     const filteredProjects = projects.filter(project => {
         const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -426,7 +477,7 @@ const Projects = () => {
         if (match) {
             handleLearnMore(match);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.state]);
 
     return (
@@ -475,12 +526,16 @@ const Projects = () => {
                 </div>
             </section>
 
-            {/* Interactive Map */}
-            <section className="projects-map">
+            {/* Interactive Project Map */}
+            <section className="projects-map" style={{ padding: "48px 0", background: "var(--card)" }}>
                 <div className="container">
-                    <ProjectsMap
+                    <h2 style={{ textAlign: "center", margin: "0 0 16px 0", fontSize: "2rem" }}>Project Locations</h2>
+                    <p style={{ textAlign: "center", opacity: 0.8, margin: "0 0 24px 0" }}>
+                        Hover on pins for quick info • Click to open details
+                    </p>
+                    <ProjectMap
                         projects={projects}
-                        onProjectClick={handleProjectClick}
+                        onOpenProject={handleOpenProject}
                     />
                 </div>
             </section>
@@ -658,6 +713,12 @@ const Projects = () => {
                     startIndex={lightboxIndex}
                     isOpen={lightboxOpen}
                     onClose={() => setLightboxOpen(false)}
+                />
+            )}
+            {activeProject && (
+                <ProjectModal 
+                    project={activeProject} 
+                    onClose={() => setActiveProject(null)} 
                 />
             )}
         </main>

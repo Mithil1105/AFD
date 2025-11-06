@@ -239,3 +239,50 @@ section {
     scroll-behavior: auto !important;
   }
 }
+
+/* Leaflet container theming */
+.leaflet-container {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Cluster circles – color to match accent */
+.marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+  background: var(--accent) !important;
+}
+
+.marker-cluster div {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+.leaflet-tooltip {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* MarkerCluster styles - fallback if CSS doesn't load */
+.marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+
+.marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.marker-cluster span {
+  line-height: 30px;
+}

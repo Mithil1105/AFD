@@ -14,14 +14,24 @@
 
 .project-modal__meta .badge::before {
   content: '';
-  width: 8px; height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--muted-foreground);
 }
 
-.project-modal__meta .badge-forest::before { background: var(--forest); }
-.project-modal__meta .badge-earth::before  { background: var(--earth); }
-.project-modal__meta .badge-accent::before { background: var(--moss); }
+.project-modal__meta .badge-forest::before {
+  background: var(--forest);
+}
+
+.project-modal__meta .badge-earth::before {
+  background: var(--earth);
+}
+
+.project-modal__meta .badge-accent::before {
+  background: var(--moss);
+}
+
 /* Layout shells */
 .site-header {
   position: sticky;
@@ -1134,9 +1144,15 @@
   position: absolute;
   left: 12px;
   bottom: 12px;
-  background: rgba(0,0,0,0.45);
-  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
+  backdrop-filter: blur(4px);
+  padding: 0.35rem 0.65rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .achievement-placeholder {
@@ -1364,6 +1380,23 @@
   border: 1px solid var(--border);
 }
 
+.india-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: var(--background);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  min-height: 400px;
+}
+
+.india-map {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
 .mapsvg-iframe-responsive {
   width: 100%;
   height: 400px;
@@ -1454,9 +1487,17 @@
   background: var(--muted-foreground);
 }
 
-.project-overlay .badge-forest::before { background: var(--forest); }
-.project-overlay .badge-earth::before  { background: var(--earth); }
-.project-overlay .badge-accent::before { background: var(--moss); }
+.project-overlay .badge-forest::before {
+  background: var(--forest);
+}
+
+.project-overlay .badge-earth::before {
+  background: var(--earth);
+}
+
+.project-overlay .badge-accent::before {
+  background: var(--moss);
+}
 
 .project-year {
   background: rgba(0, 0, 0, 0.8);
@@ -1915,12 +1956,29 @@
   background: var(--muted-foreground);
 }
 
-.about-timeline__card-header .badge-forest { color: var(--foreground); }
-.about-timeline__card-header .badge-forest::before { background: var(--forest); }
-.about-timeline__card-header .badge-earth { color: var(--foreground); }
-.about-timeline__card-header .badge-earth::before { background: var(--earth); }
-.about-timeline__card-header .badge-accent { color: var(--foreground); }
-.about-timeline__card-header .badge-accent::before { background: var(--moss); }
+.about-timeline__card-header .badge-forest {
+  color: var(--foreground);
+}
+
+.about-timeline__card-header .badge-forest::before {
+  background: var(--forest);
+}
+
+.about-timeline__card-header .badge-earth {
+  color: var(--foreground);
+}
+
+.about-timeline__card-header .badge-earth::before {
+  background: var(--earth);
+}
+
+.about-timeline__card-header .badge-accent {
+  color: var(--foreground);
+}
+
+.about-timeline__card-header .badge-accent::before {
+  background: var(--moss);
+}
 
 .about-timeline__location {
   display: inline-flex;
@@ -2101,6 +2159,10 @@
 
 .about-team__image {
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .about-team__img {
@@ -2109,6 +2171,8 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow: var(--shadow-soft);
+  display: block;
+  margin: 0 auto;
 }
 
 .about-team__icon-placeholder {
@@ -2423,22 +2487,83 @@
 }
 
 /* Lightbox */
-.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: grid; place-items: center; z-index: 1100; }
-.lightbox__inner { position: relative; max-width: 92vw; max-height: 92vh; width: 100%; height: 100%; display: grid; place-items: center; }
-.lightbox__image { max-width: 92vw; max-height: 80vh; object-fit: contain; border-radius: var(--radius); }
-.lightbox__close { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 8px; border-radius: 8px; }
-.lightbox__nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px; border-radius: 999px; }
-.lightbox__nav--left { left: 12px; }
-.lightbox__nav--right { right: 12px; }
-.lightbox__controls { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; }
-.lightbox__counter { color: white; font-weight: 600; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: grid;
+  place-items: center;
+  z-index: 1100;
+}
+
+.lightbox__inner {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.lightbox__image {
+  max-width: 92vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px;
+  border-radius: 999px;
+}
+
+.lightbox__nav--left {
+  left: 12px;
+}
+
+.lightbox__nav--right {
+  right: 12px;
+}
+
+.lightbox__controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.lightbox__counter {
+  color: white;
+  font-weight: 600;
+}
 
 /* Improve contrast of controls on dark/light imagery */
 .lightbox__controls .btn {
   background: rgba(0, 0, 0, 0.45);
   border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .lightbox__controls .btn:hover {
