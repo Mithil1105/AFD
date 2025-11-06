@@ -1,7 +1,10 @@
 {
   "files": {
-    "main.css": "/AFD/static/css/main.e498ecbb.css",
-    "main.js": "/AFD/static/js/main.4bf53de0.js",
+    "main.css": "/AFD/static/css/main.6c4129b8.css",
+    "main.js": "/AFD/static/js/main.102746b5.js",
+    "static/js/455.57a6ad68.chunk.js": "/AFD/static/js/455.57a6ad68.chunk.js",
+    "static/js/462.61b7438a.chunk.js": "/AFD/static/js/462.61b7438a.chunk.js",
+    "static/media/lION_PRIDE.mp4": "/AFD/static/media/lION_PRIDE.a2c5b6c0d2009eb14848.mp4",
     "static/media/DSC09969.jpg": "/AFD/static/media/DSC09969.b05d155aeb449463fd10.jpg",
     "static/media/Levels 1.jpg": "/AFD/static/media/Levels 1.46d4dcc0c75a4e7734f4.jpg",
     "static/media/P1036682.JPG": "/AFD/static/media/P1036682.7fc6d6f2ee8adc1eb542.JPG",
@@ -181,17 +184,18 @@
     "static/media/10394.jpg": "/AFD/static/media/10394.a8137c7604858251e425.jpg",
     "static/media/arogya-van-2.jpg": "/AFD/static/media/arogya-van-2.5db8ae1b2355d35d79e0.jpg",
     "static/media/WhatsApp Image 2021-06-09 at 5.45.13 PM.jpeg": "/AFD/static/media/WhatsApp Image 2021-06-09 at 5.45.13 PM.5c0d478ce66f1dae64c3.jpeg",
-    "static/media/Anandtike.jpg": "/AFD/static/media/Anandtike.c0cdb8d665f366b16f77.jpg",
+    "static/media/Anandtike.jpg": "/AFD/static/media/Anandtike.d2aca5606b30fea87eed.jpg",
     "static/media/10123.jpg": "/AFD/static/media/10123.a03aed35b513f394438a.jpg",
     "static/media/IMG-20191027-WA0045.jpg": "/AFD/static/media/IMG-20191027-WA0045.b41f499f79fc730d9012.jpg",
     "static/media/Dinosaur Model.jpeg": "/AFD/static/media/Dinosaur Model.caf4755f3d65064508dc.jpeg",
     "index.html": "/AFD/index.html",
-    "static/media/lION_PRIDE.mp4": "/AFD/static/media/lION_PRIDE.b32b1fa776dc58433d2d.mp4",
-    "main.e498ecbb.css.map": "/AFD/static/css/main.e498ecbb.css.map",
-    "main.4bf53de0.js.map": "/AFD/static/js/main.4bf53de0.js.map"
+    "main.6c4129b8.css.map": "/AFD/static/css/main.6c4129b8.css.map",
+    "main.102746b5.js.map": "/AFD/static/js/main.102746b5.js.map",
+    "455.57a6ad68.chunk.js.map": "/AFD/static/js/455.57a6ad68.chunk.js.map",
+    "462.61b7438a.chunk.js.map": "/AFD/static/js/462.61b7438a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e498ecbb.css",
-    "static/js/main.4bf53de0.js"
+    "static/css/main.6c4129b8.css",
+    "static/js/main.102746b5.js"
   ]
 }
