@@ -16,7 +16,7 @@ export default function ProjectMap({ projects = [], onOpenProject }) {
   if (!canRender) return null;
 
   return (
-    <div style={{ height: "500px", borderRadius: "var(--radius)", overflow: "hidden" }}>
+    <div className="project-map-wrapper" style={{ borderRadius: "var(--radius)", overflow: "hidden" }}>
       <Suspense fallback={
         <div style={{
           height: "500px",

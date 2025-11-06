@@ -153,6 +153,7 @@ export default function LeafletBundle({ projects = [], onOpenProject }) {
       maxBounds={indiaBounds}
       style={{ height: "500px", width: "100%" }}
       scrollWheelZoom={true}
+      className="project-map-container"
     >
       <TileLayer 
         url={tiles}
