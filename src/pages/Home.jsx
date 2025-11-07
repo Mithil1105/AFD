@@ -1,11 +1,40 @@
-import React from 'react';
-import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart } from 'react-icons/fi';
+import React, { useState, useEffect, useRef } from 'react';
+import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart, FiPlay } from 'react-icons/fi';
 import backgroundImage from '../assets/about/background.jpg';
-import lionPrideVideo from '../assets/videos/lION_PRIDE.mp4';
 import imgShivraj from '../assets/Project/Shivraj pur/04.jpg';
 import imgRakshak from '../assets/Project/Rakshak Van/DSC02129.jpg';
 
 const Home = () => {
+    const videoRef = useRef(null);
+    const [isVideoVisible, setIsVideoVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVideoVisible(true);
+                        // Once video is visible, we can stop observing
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.3, // Trigger when 30% of the video is visible
+                rootMargin: '0px'
+            }
+        );
+
+        if (videoRef.current) {
+            observer.observe(videoRef.current);
+        }
+
+        return () => {
+            if (videoRef.current) {
+                observer.unobserve(videoRef.current);
+            }
+        };
+    }, []);
     const organizations = [
         { name: 'Lalitkala Academy', initials: 'LA', type: 'accent' },
         { name: 'iNDEXTb', initials: 'iN', type: 'forest' },
@@ -130,14 +159,46 @@ const Home = () => {
                     <p className="section-subtitle">Iconic milestones that define our journey in sculptural excellence and eco-cultural heritage.</p>
                     <div className="achievements-grid achievements-grid-1x3">
                         <div className="card achievement-card">
-                            <div className="achievement-media">
-                                <video
-                                    className="achievement-video"
-                                    controls
-                                >
-                                    <source src={lionPrideVideo} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                            <div className="achievement-media" ref={videoRef}>
+                                {isVideoVisible ? (
+                                    <iframe
+                                        className="achievement-video"
+                                        src="https://www.youtube.com/embed/jTbLwPStAjY?controls=1&modestbranding=1&rel=0&autoplay=1&mute=1&loop=1&playlist=jTbLwPStAjY"
+                                        title="Lion Pride Sculpture"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                ) : (
+                                    <div className="achievement-video-placeholder">
+                                        <img
+                                            src="https://img.youtube.com/vi/jTbLwPStAjY/maxresdefault.jpg"
+                                            alt="Lion Pride Sculpture"
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover'
+                                            }}
+                                        />
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: '50%',
+                                            left: '50%',
+                                            transform: 'translate(-50%, -50%)',
+                                            background: 'rgba(0, 0, 0, 0.7)',
+                                            borderRadius: '50%',
+                                            width: '64px',
+                                            height: '64px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            cursor: 'pointer'
+                                        }}>
+                                            <FiPlay size={32} style={{ marginLeft: '4px' }} />
+                                        </div>
+                                    </div>
+                                )}
                                 <span className="achievement-chip badge badge-accent">Achievement</span>
                             </div>
                             <div className="achievement-year">2023</div>
