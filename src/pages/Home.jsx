@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiArrowRight, FiMapPin, FiUsers, FiAward, FiHeart, FiPlay } from 'react-icons/fi';
 import backgroundImage from '../assets/about/background.jpg';
 import imgShivraj from '../assets/Project/Shivraj pur/04.jpg';
-import imgRakshak from '../assets/Project/Rakshak Van/DSC02129.jpg';
 
 const Home = () => {
     const videoRef = useRef(null);
@@ -213,15 +212,6 @@ const Home = () => {
                             <div className="achievement-year">2019</div>
                             <h3 className="achievement-title">Shivrajpur Beach Gates</h3>
                             <p className="achievement-description">Iconic coastal gateway with two main gates and one entry gate enhancing visitor experience.</p>
-                        </div>
-                        <div className="card achievement-card">
-                            <div className="achievement-media">
-                                <img src={imgRakshak} alt="Rakshak Van" className="achievement-image" />
-                                <span className="achievement-chip badge badge-forest">Government</span>
-                            </div>
-                            <div className="achievement-year">2020</div>
-                            <h3 className="achievement-title">Rakshak Van</h3>
-                            <p className="achievement-description">Security and protection themed installations with murals and educational displays.</p>
                         </div>
                     </div>
                     <div className="achievements-cta">

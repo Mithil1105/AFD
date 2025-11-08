@@ -211,28 +211,6 @@ const Projects = () => {
                 require('../assets/Project/Tripura/PSRV4351.JPG'),
                 require('../assets/Project/Tripura/PSRV4387.JPG'),
                 require('../assets/Project/Tripura/PSRV4404.JPG')
-            ],
-            'Rakshak Van': [
-                require('../assets/Project/Rakshak Van/Aushadh manav.jpg'),
-                require('../assets/Project/Rakshak Van/CAMEL FIBRE DECOR.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02129.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02138.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02143.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02147.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02167.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02199.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02208.jpg'),
-                require('../assets/Project/Rakshak Van/DSC02247.jpg'),
-                require('../assets/Project/Rakshak Van/Gazebo.jpg'),
-                require('../assets/Project/Rakshak Van/Mural 1.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 01.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 02.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 03.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 04.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 05.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 06.jpg'),
-                require('../assets/Project/Rakshak Van/RAKSHAK VAN WALL MURAL 07.jpg'),
-                require('../assets/Project/Rakshak Van/Shurya shlip sculpture.jpg')
             ]
         };
 
@@ -407,20 +385,6 @@ const Projects = () => {
             features: ['Bird diorama', 'Cultural displays', 'Educational installations', 'Museum exhibits'],
             image: require('../assets/Project/Tripura/Birds Diorama.jpg'),
             folderName: 'Tripura'
-        },
-        {
-            id: 12,
-            title: 'Rakshak Van',
-            name: 'Rakshak Van',
-            type: 'Forest',
-            year: '2020',
-            location: 'Gujarat',
-            lat: 23.2,
-            lng: 72.6,
-            description: 'Security and protection themed installations with murals and educational displays.',
-            features: ['Security murals', 'Protection displays', 'Educational content', 'Interactive exhibits'],
-            image: require('../assets/Project/Rakshak Van/DSC02129.jpg'),
-            folderName: 'Rakshak Van'
         }
     ];
 

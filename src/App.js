@@ -3,6 +3,7 @@ import './App.css';
 import { HashRouter, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiLinkedin, FiInstagram, FiMail, FiSun, FiMoon } from 'react-icons/fi';
+import logo from './assets/logo/afd.png';
 
 import './styles/about.css';
 import Home from './pages/Home';
@@ -76,7 +77,10 @@ function Header() {
   return (
     <header className={`site-header ${solid ? 'solid' : 'transparent'}`}>
       <div className="container nav">
-        <NavLink to="/" className="brand">Amit Fibre Decor</NavLink>
+        <NavLink to="/" className="brand">
+          <img src={logo} alt="Amit Fibre Decor Logo" className="brand-logo" />
+          Amit Fibre Decor
+        </NavLink>
         <nav className="nav-links" aria-label="Primary">
           <NavLink to="/" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>Home</NavLink>
           <NavLink to="/about" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>About</NavLink>
@@ -121,11 +125,17 @@ function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <div className="footer-brand">Amit Fibre Decor</div>
-          <p className="footer-muted">Sustainable Tourism & Forest Solutions</p>
-          <div className="socials" aria-label="Social links">
+      <div className="container footer-wrapper">
+        <div className="footer-logo-section">
+          <img src={logo} alt="Amit Fibre Decor Logo" className="footer-logo-large" />
+        </div>
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand">
+              Amit Fibre Decor
+            </div>
+            <p className="footer-muted">Sustainable Tourism & Forest Solutions</p>
+            <div className="socials" aria-label="Social links">
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FiLinkedin /></a>
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FiInstagram /></a>
             <a href="mailto:hello@amitfibredecor.example" aria-label="Email"><FiMail /></a>
@@ -151,6 +161,7 @@ function Footer() {
         <div>
           <div className="footer-brand">Contact</div>
           <p className="footer-muted">Ahmedabad, Gujarat, India</p>
+        </div>
         </div>
       </div>
       <div className="container footer-bottom">
